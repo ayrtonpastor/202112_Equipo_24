@@ -1,0 +1,166 @@
+<testExecutions version="1">
+  <file path="src/app/band/band-detail/band-detail.component.spec.ts">
+    <testCase name="BandDetailComponent should create" duration="156"/>
+    <testCase name="BandDetailComponent Should toggle" duration="8"/>
+    <testCase name="BandDetailComponent Should have a band detailed element " duration="6"/>
+    <testCase name="BandDetailComponent Should get bandDetail" duration="6"/>
+    <testCase name="BandDetailComponent Should get an bandDetail" duration="8"/>
+  </file>
+  <file path="src/app/band/band-list/band-list.component.spec.ts">
+    <testCase name="BandListComponent Should take the value given" duration="11"/>
+    <testCase name="BandListComponent Should show any filtered bands" duration="6"/>
+    <testCase name="BandListComponent Should show all the bands of the system" duration="4"/>
+    <testCase name="BandListComponent get bands" duration="6"/>
+    <testCase name="BandListComponent Should select band" duration="6"/>
+    <testCase name="BandListComponent should create" duration="5"/>
+    <testCase name="BandListComponent Should have a band card element " duration="6"/>
+    <testCase name="BandListComponent get info of a real band" duration="6"/>
+    <testCase name="BandListComponent Should show all the bands because there is not text in the filter" duration="4"/>
+    <testCase name="BandListComponent get info of a fake band" duration="5"/>
+    <testCase name="BandListComponent Should show all the bands because the text is null" duration="5"/>
+  </file>
+  <file path="src/app/album/album-track-create/album-track-create.component.spec.ts">
+    <testCase name="AlbumTrackCreateComponent should create" duration="13"/>
+    <testCase name="AlbumTrackCreateComponent Cancel adding track to album" duration="10"/>
+    <testCase name="AlbumTrackCreateComponent should create a track" duration="7"/>
+  </file>
+  <file path="src/app/musician/musician-detail/musician-detail.component.spec.ts">
+    <testCase name="MusicianDetailComponent should create" duration="5"/>
+    <testCase name="MusicianDetailComponent Activate Album creation" duration="4"/>
+    <testCase name="MusicianDetailComponent Should toggle" duration="3"/>
+    <testCase name="MusicianDetailComponent Should get musicianDetail" duration="3"/>
+    <testCase name="MusicianDetailComponent Should have a musician detailed element " duration="5"/>
+    <testCase name="MusicianDetailComponent Should get an musicianDetail" duration="4"/>
+  </file>
+  <file path="src/app/album/albumdetail.spec.ts">
+    <testCase name="Albumdetail should create an instance" duration="1"/>
+  </file>
+  <file path="src/app/comment/comment.service.spec.ts">
+    <testCase name="Service: Comment should add a comment and return it" duration="1"/>
+  </file>
+  <file path="src/app/app.component.spec.ts">
+    <testCase name="AppComponent should create the app" duration="12"/>
+    <testCase name="AppComponent should have as title 'VynilTrade'" duration="6"/>
+  </file>
+  <file path="src/app/comment/comment.spec.ts">
+    <testCase name="Comment should create an instance" duration="1"/>
+  </file>
+  <file path="src/app/album/album-list/album-list.component.spec.ts">
+    <testCase name="AlbumListComponent should create" duration="6"/>
+    <testCase name="AlbumListComponent should be display albums data" duration="4"/>
+    <testCase name="AlbumListComponent Should select album" duration="5"/>
+    <testCase name="AlbumListComponent get info of a real album" duration="5"/>
+    <testCase name="AlbumListComponent get info of a fake album" duration="6"/>
+    <testCase name="AlbumListComponent Activate Album creation" duration="5"/>
+  </file>
+  <file path="src/app/collector/collector-details.spec.ts">
+    <testCase name="CollectorDetail should create an instance" duration="1"/>
+  </file>
+  <file path="src/app/musician/musicianband-create/musicianband-create.component.spec.ts">
+    <testCase name="MusicianbandCreateComponent Cancel createCollectorAlbum creation" duration="6"/>
+    <testCase name="MusicianbandCreateComponent should create collector" duration="17"/>
+    <testCase name="MusicianbandCreateComponent should create" duration="8"/>
+  </file>
+  <file path="src/app/musician/musician.service.spec.ts">
+    <testCase name="Service: Musician getBandDetail(id) of a band which exists" duration="3"/>
+    <testCase name="Service: Musician getMusicians() should return 10 records" duration="2"/>
+    <testCase name="Service: Musician getBands()" duration="1"/>
+    <testCase name="Service: Musician should be created" duration="1"/>
+  </file>
+  <file path="src/app/pagina-principal/pagina-principal.component.spec.ts">
+    <testCase name="PaginaPrincipalComponent should create" duration="14"/>
+    <testCase name="PaginaPrincipalComponent get musicians, albums and collectors" duration="15"/>
+  </file>
+  <file path="src/app/album/album.service.spec.ts">
+    <testCase name="AlbumService getAlbumDetail(id) of a album which exists" duration="2"/>
+    <testCase name="AlbumService addNewAlbum" duration="2"/>
+    <testCase name="AlbumService should be created" duration="2"/>
+    <testCase name="AlbumService getAlbums() should return 10 records" duration="2"/>
+  </file>
+  <file path="src/app/musician/musician-list/musician-list.component.spec.ts">
+    <testCase name="MusicianListComponent Should take the value given" duration="5"/>
+    <testCase name="MusicianListComponent Should select musician" duration="6"/>
+    <testCase name="MusicianListComponent Should show any filtered musicians" duration="6"/>
+    <testCase name="MusicianListComponent get musicians" duration="4"/>
+    <testCase name="MusicianListComponent Should show all the musicians because the text is null" duration="6"/>
+    <testCase name="MusicianListComponent Should have a musician card element " duration="5"/>
+    <testCase name="MusicianListComponent should create" duration="4"/>
+    <testCase name="MusicianListComponent Should show all the musicians because there is not text in the filter" duration="5"/>
+    <testCase name="MusicianListComponent Should show all the musicians of the system" duration="5"/>
+    <testCase name="MusicianListComponent get info of a real musician" duration="4"/>
+    <testCase name="MusicianListComponent get info of a fake musician" duration="6"/>
+  </file>
+  <file path="src/app/album/album-detail/album-detail.component.spec.ts">
+    <testCase name="AlbumDetailComponent should create an instance" duration="4"/>
+    <testCase name="AlbumDetailComponent Should get an albumDetail" duration="5"/>
+    <testCase name="AlbumDetailComponent Activate add comment" duration="5"/>
+    <testCase name="AlbumDetailComponent Should have an album detailed element " duration="4"/>
+    <testCase name="AlbumDetailComponent Should get albumDetail" duration="3"/>
+  </file>
+  <file path="src/app/collector/collector-album-create/collector-album-create.component.spec.ts">
+    <testCase name="CollectorAlbumCreateComponent should create collector" duration="9"/>
+    <testCase name="CollectorAlbumCreateComponent createcollectorAlbum" duration="6"/>
+    <testCase name="CollectorAlbumCreateComponent should create" duration="6"/>
+    <testCase name="CollectorAlbumCreateComponent Cancel createCollectorAlbum creation" duration="6"/>
+  </file>
+  <file path="src/app/musician/musician.service.spec.ts">
+    <testCase name="Service: Musician addMusicianToBand" duration="2"/>
+    <testCase name="Service: Musician getBands()" duration="3"/>
+    <testCase name="Service: Musician should be created" duration="1"/>
+    <testCase name="Service: Musician getMusicians() should return 10 records" duration="2"/>
+    <testCase name="Service: Musician getMusicianDetail(id) of a musician which exists" duration="1"/>
+  </file>
+  <file path="src/app/collector/favorite-musician-creator/favorite-musician-creator.component.spec.ts">
+    <testCase name="FavoriteMusicianCreatorComponent should create collector" duration="6"/>
+    <testCase name="FavoriteMusicianCreatorComponent should create" duration="7"/>
+    <testCase name="FavoriteMusicianCreatorComponent Cancel adding favorite musician" duration="6"/>
+    <testCase name="FavoriteMusicianCreatorComponent favoriteMusicianCreation" duration="5"/>
+  </file>
+  <file path="src/app/track/track.spec.ts">
+    <testCase name="Track should create an instance" duration="1"/>
+  </file>
+  <file path="src/app/collector/collector-list/collector-list.component.spec.ts">
+    <testCase name="CollectorListComponent should create" duration="3"/>
+    <testCase name="CollectorListComponent Should have a card in collectors-list" duration="4"/>
+    <testCase name="CollectorListComponent Performers Name" duration="2"/>
+    <testCase name="CollectorListComponent onSelectedCollector" duration="5"/>
+    <testCase name="CollectorListComponent unSelectCollector" duration="4"/>
+    <testCase name="CollectorListComponent get info of a real collector" duration="3"/>
+    <testCase name="CollectorListComponent Should get collectors" duration="3"/>
+    <testCase name="CollectorListComponent get collectors" duration="4"/>
+  </file>
+  <file path="src/app/album/album-create/album-create.component.spec.ts">
+    <testCase name="AlbumCreateComponent should create" duration="11"/>
+    <testCase name="AlbumCreateComponent addCommentCreation" duration="9"/>
+    <testCase name="AlbumCreateComponent Cancel adding album" duration="9"/>
+    <testCase name="AlbumCreateComponent should create an album" duration="11"/>
+  </file>
+  <file path="src/app/collector/collector.service.spec.ts">
+    <testCase name="CollectorService getCollectors() should return 10 records" duration="3"/>
+    <testCase name="CollectorService getCollectorDetail() should return 1 record" duration="1"/>
+    <testCase name="CollectorService should be created" duration="1"/>
+    <testCase name="CollectorService createCollectorAlbum" duration="2"/>
+    <testCase name="CollectorService createFavoriteMusician" duration="3"/>
+  </file>
+  <file path="src/app/collector/collector-detail/collector-detail.component.spec.ts">
+    <testCase name="CollectorDetailComponent Collector detail" duration="4"/>
+    <testCase name="CollectorDetailComponent Should toggle" duration="2"/>
+    <testCase name="CollectorDetailComponent should create" duration="2"/>
+    <testCase name="CollectorDetailComponent Activate Album creation" duration="4"/>
+    <testCase name="CollectorDetailComponent Should get an collectorDetail" duration="3"/>
+    <testCase name="CollectorDetailComponent Should have name in collector-detail" duration="3"/>
+    <testCase name="CollectorDetailComponent Activate favorite musician creation" duration="3"/>
+  </file>
+  <file path="src/app/collectoralbum/collectoralbum.spec.ts">
+    <testCase name="Collectoralbum should create an instance" duration="1"/>
+  </file>
+  <file path="src/app/comment/comment-creator/comment-creator.component.spec.ts">
+    <testCase name="CommentCreatorComponent Cancel adding favorite musician" duration="9"/>
+    <testCase name="CommentCreatorComponent should create collector" duration="19"/>
+    <testCase name="CommentCreatorComponent favoriteMusicianCreation" duration="8"/>
+    <testCase name="CommentCreatorComponent should create" duration="7"/>
+  </file>
+  <file path="src/app/collector/collector.spec.ts">
+    <testCase name="Collector should create an instance" duration="1"/>
+  </file>
+</testExecutions>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-9" i18n>Albums</h1>
+
+    <div class="col-3" style="float: right">
+      <button
+        id="add_album"
+        type="button"
+        class="btn btn-dark"
+        (click)="createNewAlbum(true)"
+        i18n
+      >
+        Add album
+      </button>
+      &nbsp;
+      <button
+        id="add_track"
+        type="button"
+        class="btn btn-dark"
+        (click)="createNewTrack(true)"
+        i18n
+      >
+        Add tracks
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      *ngFor="let album of albums; let i = index"
+      class="col-sm-12 col-md-6 col-lg-3 hover-cursor"
+    >
+      <div class="card" style="width: 17rem">
+        <img
+          class="card-img-top"
+          src="{{ album.cover }}"
+          (click)="onSelectedAlbum(album)"
+          alt="Cubierta de {{ album.cover }}"
+          height="250px"
+        />
+        <div class="card-body">
+          <h3
+            id="albumName{{ i }}"
+            class="card-title"
+            (click)="onSelectedAlbum(album)"
+          >
+            {{ album.name }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.selected && !this.activateAlbumCreation">
+  <app-album-detail [albumDetail]="selectedAlbum"></app-album-detail>
+</div>
+<div *ngIf="this.activateAlbumCreation && !this.selected">
+  <app-album-create (reloadAlbums)="getAlbums()"></app-album-create>
+</div>
+<div *ngIf="this.activateTrackCreation && !this.selected">
+  <app-album-track-create (reloadAlbums)="getAlbums()"></app-album-track-create>
+</div>

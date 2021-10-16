@@ -1,0 +1,106 @@
+<div *ngIf="this.collectorDetail" class="container">
+  <br>
+  <div class="row">
+    <a
+      *ngIf="returnEvent"
+      type="button"
+      class="btn ml-3 btn-outline-dark rounded-pill w-auto"
+      routerLink="/collectors/list"
+      (click)="toggle()"
+    >
+      <span class="material-icons sm-12"> chevron_left </span>
+    </a>
+  </div>
+  <div
+    class="container-fluid bg-white px-3 py-3 rounded my-3"
+    id="collector-detail"
+  >
+  <div class="d-flex justify-content-between">
+    <h1>{{ collectorDetail.name }}</h1>
+  </div>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <h2 class="col-9" i18n>Albums for sale</h2>
+        <div class="col-3">
+          <button id="add-album" style="float: right;" class="btn btn-dark" (click)="activateAlbumCreation(true)" i18n>
+            Add album
+          </button>
+        </div>
+      </div>
+
+      <div class="card mb-3" *ngIf="this.createAlbumSelected">
+        <app-collector-album-create [collectorId]="this.collectorDetail.id" (returnEvent)="activateAlbumCreation(false)" >
+        </app-collector-album-create>
+      </div>
+      <div *ngFor="let album of collectorDetail.collectorAlbums">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-2 d-flex">
+              <img
+                [src]="album.album.cover"
+                class="m-auto"
+                alt="Imagen de album"
+                width="150px"
+                (click)="onSelectedAlbum(album.album)"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">{{ album.album.name }}</h3>
+                <p class="card-text">{{ album.album.description }}</p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >{{ album.album.genre }} | {{ album.album.recordLabel }} |
+                    {{ album.album.releaseDate | date }}</small
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="col-md-2 d-flex">
+              <p class="align-self-center" style="font-size: 24px;">{{ album.price | currency }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <h2 class="col-9" i18n>Favorite artists</h2>
+        <div class="col-3">
+          <button id="add-favorite-musician" style="float: right;" class="btn btn-dark" (click)="activateFavMusicianCreation(true)" i18n>
+            Add musician
+          </button>
+        </div>
+      </div>
+
+      <div class="card mb-3" *ngIf="this.createFavMusician">
+        <app-favorite-musician-creator [collectorDetail]="this.collectorDetail" (returnEvent)="activateFavMusicianCreation(false)">
+        </app-favorite-musician-creator>
+      </div>
+      <div *ngFor="let performer of collectorDetail.favoritePerformers">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-2 d-flex">
+              <img
+                [src]="performer.image"
+                class="m-auto"
+                alt="Imagen de album"
+                width="150px"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title">{{ performer.name }}</h3>
+                <p class="card-text">{{ performer.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

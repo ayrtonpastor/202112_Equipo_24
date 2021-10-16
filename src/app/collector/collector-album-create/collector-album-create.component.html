@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="col p-3">
+    <div class="h3" i18n>Add album to collector</div>
+    <form
+      [formGroup]="collectorAlbumForm"
+      (ngSubmit)="
+        !collectorAlbumForm.invalid &&
+          createCollectorAlbum(collectorAlbumForm.value)
+      "
+    >
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="precio" i18n> Prize* </label>
+        <input
+          novalidate
+          id="precio"
+          class="form-control"
+          formControlName="price"
+          placeholder="Precio"
+          type="number"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            collectorAlbumForm.get('price').hasError('required') &&
+            collectorAlbumForm.get('price').touched
+          "
+          i18n >
+          Required price
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            collectorAlbumForm.get('price').hasError('min') &&
+            collectorAlbumForm.get('price').touched
+          "
+          i18n >
+          Price must be greater than zero
+        </div>
+      </div>
+
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="album"> Album* </label>
+        <select formControlName="album" id="album" class="form-select">
+          <option *ngFor="let album of albums" [value]="album.id">
+            {{ album.name }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            collectorAlbumForm.get('album').hasError('required') &&
+            collectorAlbumForm.get('album').touched
+          "
+          i18n>
+          Required album
+        </div>
+      </div>
+
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="status" i18n> Status* </label>
+        <select formControlName="status" id="status" class="form-select">
+          <option *ngFor="let status of albums_statuses" [value]="status.value">
+            {{ status.name }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            collectorAlbumForm.get('status').hasError('required') &&
+            collectorAlbumForm.get('status').touched
+          "
+          i18n>
+          Required status
+        </div>
+      </div>
+
+      <div class="m-3 small">
+        <p i18n>* Required fields</p>
+      </div>
+
+      <div style="float: right;">
+        <button type="button" class="btn btn-danger" (click)="cancelCreation()" i18n>Cancel</button>&nbsp;
+        <button type="submit" class="btn btn-primary" [disabled]="!collectorAlbumForm.valid" i18n>Create</button>
+      </div>
+      <br><br>
+    </form>
+  </div>
+</div>

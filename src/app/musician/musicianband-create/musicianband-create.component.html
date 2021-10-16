@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="col p-3">
+    <div class="h3" i18n>Asign to a band</div>
+    <form
+      [formGroup]="musicianBandForm"
+      (ngSubmit)="
+        !musicianBandForm.invalid && createMusicianBand(musicianBandForm.value)
+      "
+    >
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="banda" i18n> Band* </label>
+        <select formControlName="band" id="banda" class="form-select">
+          <option *ngFor="let banda of bandas" [value]="banda.id">
+            {{ banda.name }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          musicianBandForm.get('band').hasError('required') &&
+          musicianBandForm.get('band').touched
+          "
+          i18n>
+          Required band
+        </div>
+      </div>
+
+      <div class="m-3 small">
+        <p class="small" i18n>* Required fields</p>
+      </div>
+
+      <div style="float: right;">
+        <button type="button" class="btn btn-danger" (click)="cancelCreation()" i18n>Cancel</button>&nbsp;
+        <button type="submit" class="btn btn-primary" [disabled]="!musicianBandForm.valid" i18n>Asign</button>
+      </div>
+      <br><br>
+    </form>
+  </div>
+</div>

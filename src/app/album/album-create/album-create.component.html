@@ -1,0 +1,205 @@
+<div class="container bg-white px-3 py-3 rounded my-3">
+  <h1 i18n>Create album</h1>
+  <hr />
+  <div class="row">
+    <form
+      [formGroup]="albumForm"
+      (ngSubmit)="!albumForm.invalid && createAlbum(albumForm.value)"
+    >
+      <div class="form-group">
+        <label for="name" i18n> Name* </label>
+        <input
+          novalidate
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Album name"
+          i18n-placeholder
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('name').hasError('required') &&
+            albumForm.get('name').touched
+          "
+          i18n
+        >
+          Album name required
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('name').hasError('minlength') &&
+            albumForm.get('name').touched
+          "
+          i18n
+        >
+          Album name too short.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cover" i18n>Cover url*</label>
+        <input
+          novalidate
+          id="cover"
+          class="form-control"
+          formControlName="cover"
+          placeholder="Cover url"
+          i18n-placeholder
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('cover').hasError('required') &&
+            albumForm.get('cover').touched
+          "
+          i18n
+        >
+          Cover url is required
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('cover').hasError('minlength') &&
+            albumForm.get('cover').touched
+          "
+          i18n
+        >
+          Cover url is too short.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="rele" i18n> Album release date (dd/mm/yy)* </label>
+        <input
+          novalidate
+          type="date"
+          id="releaseDate"
+          class="form-control"
+          formControlName="releaseDate"
+          placeholder="Release date"
+          i18n-placeholder
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('releaseDate').hasError('required') &&
+            albumForm.get('releaseDate').touched
+          "
+          i18n
+        >
+          A valid date is required
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('cover').hasError('minlength') &&
+            albumForm.get('cover').touched
+          "
+          i18n
+        >
+          Date too short, must have at least one character.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="decription" i18n> Album description* </label>
+        <input
+          novalidate
+          id="description"
+          class="form-control"
+          formControlName="description"
+          placeholder="Album description"
+          i18n-placeholder
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('description').hasError('required') &&
+            albumForm.get('description').touched
+          "
+          i18n
+        >
+          An Album description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="genre" i18n> Genre* </label>
+        <select
+          id="genre"
+          class="form-select"
+          formControlName="genre"
+          aria-label=".form-select-sm example"
+        >
+          <option selected i18n>Select a genre</option>
+          <option *ngFor="let genre of genres" [value]="genre.value">
+            {{ genre.text }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('genre').hasError('required') &&
+            albumForm.get('genre').touched
+          "
+          i18n
+        >
+          It is required to define a genre for the new album
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="recordLabel" i18n> Record label* </label>
+        <select
+          id="recordLabel"
+          class="form-select"
+          formControlName="recordLabel"
+          aria-label=".form-select-sm example"
+        >
+          <option selected i18n>Select a record label</option>
+          <option
+            *ngFor="let recordlabel of recordLabels"
+            [value]="recordlabel.value"
+          >
+            {{ recordlabel.text }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            albumForm.get('recordLabel').hasError('required') &&
+            albumForm.get('recordLabel').touched
+          "
+          i18n
+        >
+          It is required to define a record label for the new album
+        </div>
+      </div>
+
+      <div class="form-group" style="float: right">
+        <button
+          type="button"
+          id="cancel-create-album"
+          class="btn btn-danger"
+          (click)="cancelCreation()"
+          i18n
+        >
+          Cancel</button
+        >&nbsp;
+        <button
+          type="submit"
+          id="create-album"
+          class="btn btn-primary"
+          [disabled]="!albumForm.valid"
+          i18n
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

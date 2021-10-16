@@ -1,0 +1,153 @@
+<div class="container bg-white px-3 py-3 rounded my-3">
+  <h1 i18n>Create and assign track to album</h1>
+  <hr />
+  <div class="row">
+    <form
+      [formGroup]="trackForm"
+      (ngSubmit)="!trackForm.invalid && createTrack(trackForm.value)"
+    >
+      <div class="form-group">
+        <label for="name" i18n> Track Name* </label>
+
+        <input
+          novalidate
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="track name"
+          i18n-placeholder
+        />
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('name').hasError('required') &&
+            trackForm.get('name').touched
+          "
+          i18n
+        >
+          A track name is required
+        </div>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('name').hasError('minlength') &&
+            trackForm.get('name').touched
+          "
+          i18n
+        >
+          Track name too short.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="duration" i18n>Track duration (mm:ss)*</label>
+
+        <input
+          novalidate
+          type="string"
+          id="duration"
+          class="form-control"
+          formControlName="duration"
+          placeholder="mm:ss"
+          i18n-placeholder
+        />
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('duration').hasError('required') &&
+            trackForm.get('duration').touched
+          "
+          i18n
+        >
+          Track duration is required
+        </div>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('duration').hasError('minlength') &&
+            trackForm.get('duration').touched
+          "
+          i18n
+        >
+          Track duration is too short.
+        </div>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('duration').hasError('pattern') &&
+            trackForm.get('duration').touched
+          "
+          i18n
+        >
+          Track duration does not match the format [mm:ss]
+        </div>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('duration').hasError('maxlength') &&
+            trackForm.get('duration').touched
+          "
+          i18n
+        >
+          Track duration has too many characters.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="id" i18n> Assign new track to album* </label>
+        <select
+          id="id"
+          class="form-select"
+          formControlName="id"
+          aria-label=".form-select-sm example"
+        >
+          <option selected i18n>
+            Select an album to assign the track created &#9662;
+          </option>
+          <option *ngFor="let album of albums" [value]="album.id">
+            {{ album.name }}
+          </option>
+        </select>
+
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            trackForm.get('id').hasError('required') &&
+            trackForm.get('id').touched
+          "
+          i18n
+        >
+          An album is required to be selected
+        </div>
+      </div>
+
+      <div class="form-group" style="float: right">
+        <button
+          type="button"
+          id="track_cancel"
+          class="btn btn-danger"
+          (click)="cancelCreation()"
+          i18n
+        >
+          Cancel
+        </button>
+        &nbsp;
+        <button
+          type="submit"
+          id="track_create_assign"
+          class="btn btn-primary"
+          [disabled]="!trackForm.valid"
+          i18n
+        >
+          Create & Assign
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

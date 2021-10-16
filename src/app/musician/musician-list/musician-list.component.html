@@ -1,0 +1,40 @@
+<div *ngIf="selected" class="container-fluid bg-light px-5">
+  <app-musician-detail
+    [musicianDetail]="selectedMusician"
+    (returnEvent)="unselectMusician(event)"
+  ></app-musician-detail>
+</div>
+
+<div *ngIf="!selected" class="container-fluid bg-light px-5 py-3">
+  <h1 class="container" i18n>Musicians</h1>
+
+  <div class="container bg-white px-3 py-3 rounded">
+    <div style="float: right;">
+      <input class="form-control" (input)="filterMusicians($event.target.value)" placeholder="Search" i18n-placeholder>
+    </div>
+    <br>
+    <br>
+    <div *ngFor="let musician of filteredMusicians">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-2 d-flex">
+            <img
+              [src]="musician.image"
+              (click)="onSelectedMusician(musician)"
+              class="m-auto"
+              alt="{{musician.name+'.image'}}"
+              width="150px"
+              style="cursor: pointer;"
+            />
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h2 class="card-title" style="cursor: pointer;" (click)="onSelectedMusician(musician)">{{ musician.name }}</h2>
+              <p class="card-text">{{ musician.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

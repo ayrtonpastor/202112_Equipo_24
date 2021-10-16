@@ -1,0 +1,7 @@
+.routerActive {
+  background: transparent; color: white !important; font-weight: bold; font-style: italic; font-size: large;
+}
+
+a {
+  color: whitesmoke !important;
+}

@@ -1,0 +1,110 @@
+<h1 class="text-center">
+  VynilTrade
+</h1>
+
+<div class="container">
+  <h2 class="container" i18n>Albums</h2>
+  <div class="d-flex">
+    <div *ngFor="let album of albumes" class="ml-2 hover-cursor">
+      <div class="card" style="width: 17rem;">
+        <a href="/albums/{{album.id}}">
+          <img class="card-img-top" src="{{album.cover}}" alt="Cubierta de {{ album.cover }}" height="250px">
+        </a>
+        <div class="card-body">
+          <h2 class="card-title">{{ album.name }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="container" i18n>Musicians</h2>
+  <div *ngFor="let musician of this.musicos">
+    <div class="container bg-white px-3 py-3 rounded">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-2 d-flex">
+            <a routerLink="/musicians/{{musician.id}}">
+              <img
+                [src]="musician.image"
+                class="m-auto"
+                alt="{{ 'Imagen de ' + musician.name }}"
+                width="150px"
+                style="cursor: pointer"
+              />
+            </a>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <h2 class="card-title" style="cursor: pointer">
+                {{ musician.name }}
+              </h2>
+              <p class="card-text">{{ musician.description }}</p>
+
+              <br />
+              <div style="vertical-align: sub; float: right">
+                <a
+                  class="btn btn-dark"
+                  routerLink="/musicians/{{musician.id}}"
+                  i18n>See more</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="container" i18n>Collectors</h2>
+  <div
+    class="card mb-3 rounded border-bottom"
+    *ngFor="let collector of this.coleccionistas"
+  >
+    <div class="row g-0">
+      <div class="col-md-11">
+        <div class="card-body">
+          <h2 class="card-title">{{ collector.name }}</h2>
+          <p class="card-text text-secondary">
+            <span style="font-weight: 500 !important" i18n>
+              Available albums:
+            </span>
+            {{ collector.collectorAlbums.length }}
+          </p>
+          <p class="card-text text-secondary">
+            <span style="font-weight: 500 !important" i18n>
+              Favorite artists:
+            </span>
+            <ng-container
+              *ngFor="
+                let item of collector.favoritePerformers;
+                let i = index;
+                last as isLast
+              "
+            >
+              <ng-container *ngIf="i < 3">
+                <ng-container *ngIf="!isLast">{{ item.name }},</ng-container>
+                <ng-container *ngIf="isLast">{{ item.name }}.</ng-container>
+              </ng-container>
+            </ng-container>
+          </p>
+        </div>
+      </div>
+      <div
+        class="col-12 col-md-1 container-fluid align-self-center p-2 justify-content-center d-flex"
+      >
+        <a
+          type="button"
+          class="d-none d-md-flex btn btn-outline-dark rounded-pill w-auto"
+          routerLink="collectors/{{ collector.id }}"
+          [attr.aria-label]="collector.name"
+        >
+          <span class="material-icons md-24"> chevron_right </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

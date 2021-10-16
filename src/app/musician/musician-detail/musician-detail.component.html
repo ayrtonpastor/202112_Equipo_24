@@ -1,0 +1,93 @@
+<div *ngIf="this.musicianDetail" class="container">
+  <br>
+  <div class="row">
+    <a *ngIf="returnEvent"
+        type="button"
+        class="btn ml-3 btn-outline-dark rounded-pill w-auto"
+        routerLink="/musicians"
+        (click)="toggle()">
+      <span class="material-icons sm-12"> chevron_left </span>
+    </a>
+  </div>
+
+  <div class="container-fluid bg-white px-3 py-3 rounded my-3" id="musician-detail">
+    <div class="d-flex justify-content-between">
+      <h1>{{musicianDetail.name}}</h1>
+      <button class="btn btn-dark" (click)="activateBandAssign(true)" i18n>
+        Assign to a band
+      </button>
+    </div>
+    <hr>
+    <div class="card mb-3" *ngIf="this.bandAssignMenu">
+      <app-musicianband-create [musicianId]="this.musicianDetail.id" (returnEvent)="activateBandAssign(false)" >
+      </app-musicianband-create>
+    </div>
+
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-md-3 d-flex">
+          <img
+            [src]="musicianDetail.image"
+            class="m-auto"
+            alt="{{musicianDetail.name+'.image'}}"
+            width="200px"
+          />
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <p class="card-text">
+              <small class="text-muted">{{ musicianDetail.birthDate | date }}</small>
+              <br>
+              {{ musicianDetail.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+    </div>
+    <hr>
+
+    <div class="container">
+      <h2 i18n>Albums</h2>
+      <div *ngFor="let album of musicianDetail.albums">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-3 d-flex">
+              <img
+                [src]="album.cover"
+                class="m-auto"
+                alt="{{'cubierta de '+album.name}}"
+                width="150px"
+              />
+            </div>
+            <div class="col-md-9">
+              <div class="card-body">
+                <h3 class="card-title">{{ album.name }}</h3>
+                <p class="card-text">{{ album.description }}</p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >{{ album.genre }} | {{ album.recordLabel }} |
+                    {{ album.releaseDate | date }}</small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="container">
+      <h2 i18n>Prizes</h2>
+      <div class="row">
+        <span *ngFor="let performerPrize of musicianDetail.performerPrizes">
+          &nbsp;&#9679;&nbsp;{{ performerPrize.premiationDate | date }}
+          <br>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

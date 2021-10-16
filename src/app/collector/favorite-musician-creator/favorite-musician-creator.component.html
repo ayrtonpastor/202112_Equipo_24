@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="col p-3">
+    <form [formGroup]="favoriteMusicianForm" (ngSubmit)="!favoriteMusicianForm.invalid && createFavoriteMusician(favoriteMusicianForm.value)">
+      <div class="form-group">
+        <label for="musician_id" i18n>Musician*</label>
+
+        <select id="musician_id" class="form-control" formControlName="musician_id" aria-autocomplete="list">
+          <option value="" hidden selected i18n>Select a musician &#9662;</option>
+          <option *ngFor="let musician of musicians" value="{{musician.id}}">{{musician.name}}</option>
+        </select>
+
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="favoriteMusicianForm.get('musician_id').hasError('required') && favoriteMusicianForm.get('musician_id').touched" i18n>
+          Musician required
+        </div>
+      </div>
+
+      <div class="form-group small">
+        <p i18n>* Required field</p>
+      </div>
+
+      <div style="float: right;">
+        <button type="button" class="btn btn-danger ml-3" (click)="cancelCreation()" i18n>Cancel</button>&nbsp;
+        <button id="create-fav-musician" type="submit" class="btn btn-primary" [disabled]="!favoriteMusicianForm.valid" i18n>Create</button>
+      </div>
+      <br><br>
+    </form>
+  </div>
+</div>
+

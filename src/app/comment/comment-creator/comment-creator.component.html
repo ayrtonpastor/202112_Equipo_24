@@ -1,0 +1,54 @@
+<strong i18n>Add comment</strong>
+<form [formGroup]="commentForm" (ngSubmit)="!commentForm.invalid && createComment(commentForm.value)">
+  <div class="form-group">
+    <label for="description" i18n>Description*</label>
+
+    <textarea novalidate id="description" class="form-control" formControlName="description" placeholder="Your description" rows="3" i18n-placeholder></textarea>
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="commentForm.get('description').hasError('required') && commentForm.get('description').touched" i18n>
+        Description required
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="commentForm.get('description').hasError('minlength')" i18n>
+        Description too short
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="rating" i18n>Rating*</label>
+
+    <div class="input-group" style="display: table-cell; vertical-align: middle;">
+      <input type="radio" class="rating" formControlName="rating" name="rating" id="1" value="1">&nbsp;<label for="1">1</label>&nbsp;&nbsp;
+      <input type="radio" class="rating" formControlName="rating" name="rating" id="2" value="2">&nbsp;<label for="2">2</label>&nbsp;&nbsp;
+      <input type="radio" class="rating" formControlName="rating" name="rating" id="3" value="3">&nbsp;<label for="3">3</label>&nbsp;&nbsp;
+      <input type="radio" class="rating" formControlName="rating" name="rating" id="4" value="4">&nbsp;<label for="4">4</label>&nbsp;&nbsp;
+      <input type="radio" class="rating" formControlName="rating" name="rating" id="5" value="5">&nbsp;<label for="5">5</label>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="commentForm.get('rating').hasError('required') && commentForm.get('rating').touched" i18n>
+      Rating required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="collector" i18n>Collector*</label>
+
+    <select id="collector" class="form-control" formControlName="collector" aria-label=".form-select-sm example">
+      <option hidden selected i18n>Select a collector &#9662;</option>
+      <option *ngFor="let collector of collectors" value="collector.id">{{collector.name}}</option>
+    </select>
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="commentForm.get('collector').hasError('required') && commentForm.get('collector').touched" i18n>
+      Collector required
+    </div>
+  </div>
+
+  <div class="form-group small">
+    <p i18n>* Required fields</p>
+  </div>
+
+  <div style="float: right;">
+    <button id="cancel-comment" type="button" class="btn btn-danger" (click)="cancelCreation()" i18n>Cancel</button>&nbsp;
+    <button id="create-comment" type="submit" class="btn btn-success" [disabled]="!commentForm.valid" i18n>Add</button>
+  </div>
+</form>

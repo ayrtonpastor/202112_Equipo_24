@@ -1,0 +1,66 @@
+<div *ngIf="selected" class="container-fluid bg-light px-5">
+  <app-collector-detail
+    [collectorDetail]="selectedCollector"
+    (returnEvent)="unselectCollector(event)"
+  ></app-collector-detail>
+</div>
+
+<div *ngIf="!selected" class="container-fluid bg-light px-5 py-3">
+  <h1 class="container" i18n>Collectors</h1>
+  <div class="container bg-white px-3 py-3 rounded">
+    <div
+      class="card mb-3 rounded border-bottom"
+      *ngFor="let collector of collectors"
+    >
+      <div class="row g-0">
+        <div class="col-md-11">
+          <div class="card-body">
+            <h2 class="card-title">{{ collector.name }}</h2>
+            <p class="card-text text-secondary">
+              <span style="font-weight: 500 !important" i18n>
+                Available albums:
+              </span>
+              {{ collector.collectorAlbums.length }}
+            </p>
+            <p class="card-text text-secondary">
+              <span style="font-weight: 500 !important" i18n>
+                Favorite artists:
+              </span>
+              <ng-container
+                *ngFor="
+                  let item of collector.favoritePerformers;
+                  let i = index;
+                  last as isLast
+                "
+              >
+                <ng-container *ngIf="i < 3">
+                  <ng-container *ngIf="!isLast">{{ item.name }},</ng-container>
+                  <ng-container *ngIf="isLast">{{ item.name }}.</ng-container>
+                </ng-container>
+              </ng-container>
+            </p>
+          </div>
+        </div>
+        <div
+          class="col-12 col-md-1 container-fluid align-self-center p-2 justify-content-center d-flex"
+        >
+          <button
+            id="collector-{{ collector.id.toString() }}"
+            type="button"
+            class="d-none d-md-flex btn btn-outline-dark rounded-pill w-auto"
+            (click)="onSelectedCollector(collector)"
+          >
+            <span class="material-icons md-24"> chevron_right </span>
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-dark rounded-pill d-md-none w-75"
+            (click)="onSelectedCollector(collector)"
+          >
+            <span class="material-icons md-24"> chevron_right </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
